@@ -3,7 +3,7 @@
     "camunda-mcp-server": {
       "command": "/path/to/python.exe",
       "args": ["-m", "src.server"],
-      "cwd": "<basedir>\camunda_mcp_server",
+      "cwd": "<basedir>/camunda_mcp_server",
       "env": {
         "CAMUNDA_URL": "http://localhost:8080/engine-rest",
         "CAMUNDA_USERNAME": "demo",
