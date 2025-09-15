@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  camunda-mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: camunda-mcp-server
+    restart: unless-stopped
+    environment:
+      # Camunda Configuration
+      - CAMUNDA_URL=${CAMUNDA_URL:-http://host.docker.internal:8080/engine-rest}
+      - CAMUNDA_USERNAME=${CAMUNDA_USERNAME:-demo}
+      - CAMUNDA_PASSWORD=${CAMUNDA_PASSWORD:-demo}
+      - CAMUNDA_AUTH_TYPE=${CAMUNDA_AUTH_TYPE:-basic}
+      # Logging
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    # MCP uses stdio protocol - no ports needed
+    # ports: # Uncomment for debugging if needed
+    #   - "3001:8000"
+    # Mount volume for configuration
+    volumes:
+      - ./.env:/app/.env:ro
+    # Add extra hosts for accessing host machine services
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "from src.camunda.client import CamundaClient; from src.camunda.models import CamundaConfig; CamundaClient(CamundaConfig.from_env()).health_check() or exit(1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Include a Camunda container for testing
+  camunda-bpm:
+    image: camunda/camunda-bpm-platform:latest
+    container_name: camunda-bpm
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_DRIVER=h2
+      - DB_URL=jdbc:h2:mem:camunda;DB_CLOSE_DELAY=-1
+      - DB_USERNAME=sa
+      - DB_PASSWORD=sa
+    profiles:
+      - with-camunda
+
+networks:
+  default:
+    name: camunda-mcp-network
