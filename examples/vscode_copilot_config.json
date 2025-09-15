@@ -1,9 +1,9 @@
 {
   "github.copilot.mcp.servers": {
     "camunda-mcp-server": {
-      "command": "C:/Users/hhaus/AppData/Local/Programs/Python/Python312/python.exe",
+      "command": "/path/to/python.exe",
       "args": ["-m", "src.server"],
-      "cwd": "C:\\code\\pythia\\camunda_mcp_server",
+      "cwd": "<basedir>\camunda_mcp_server",
       "env": {
         "CAMUNDA_URL": "http://localhost:8080/engine-rest",
         "CAMUNDA_USERNAME": "demo",
