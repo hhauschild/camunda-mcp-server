@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-We actively support the following versions with security updates:
+We will actively support the following versions with security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
