@@ -19,7 +19,7 @@ We take security vulnerabilities seriously. If you discover a security vulnerabi
 
 Instead, please:
 
-1. **Email us directly** at [your-email@domain.com] with:
+1. **Email us directly** at [xil8k5lgh@mozmail.com] with:
    - Description of the vulnerability
    - Steps to reproduce
    - Potential impact
@@ -106,7 +106,7 @@ We don't currently offer a formal bug bounty program, but we greatly appreciate 
 ### Contact
 
 For security-related questions or concerns:
-- **Security issues**: [your-security-email@domain.com]
+- **Security issues**: [xil8k5lgh@mozmail.com]
 - **General questions**: Create a GitHub issue with the "security" label
 
 Thank you for helping keep the Camunda MCP Server secure!
