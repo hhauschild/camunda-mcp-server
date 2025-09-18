@@ -34,6 +34,7 @@ def test_tools_registered():
             'create_task',
             'list_process_instances',
             'list_process_definitions',
+            'start_process',
             'get_task_comments',
             'add_task_comment'
         ]
