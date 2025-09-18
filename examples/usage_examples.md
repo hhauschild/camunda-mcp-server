@@ -66,6 +66,13 @@ This document provides examples of how to use the Camunda MCP Server with AI ass
 "Show me all deployed processes"
 ```
 
+#### Start Process Instance
+```
+"Start a new invoice process"
+"Create a process instance for order-processing with business key ORDER-2024-001"
+"Start process loan-approval with variables amount=50000 and customer=john.doe"
+```
+
 ### Comment Management
 
 #### Get Task Comments
@@ -99,7 +106,17 @@ This document provides examples of how to use the Camunda MCP Server with AI ass
 **User**: "Show me the details of process instance xyz-789"
 **Assistant**: Provides process instance information
 
-### Scenario 3: Task Completion
+### Scenario 3: Starting New Processes
+**User**: "I need to start a new invoice process for order ORDER-2024-001"
+**Assistant**: Uses `start_process_instance` with process key and business key
+
+**User**: "Start the loan approval process with amount 75000 and customer ID 12345"
+**Assistant**: Uses `start_process_instance` with variables for the loan approval
+
+**User**: "What processes can I start?"
+**Assistant**: Uses `list_process_definitions` to show available process definitions
+
+### Scenario 4: Task Completion
 **User**: "I've approved the expense report in task def-456, mark it complete"
 **Assistant**: Uses `complete_task` with appropriate variables
 
